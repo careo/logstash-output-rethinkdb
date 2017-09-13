@@ -1,17 +1,16 @@
+# frozen_string_literal: true
 # encoding: utf-8
-require "logstash/outputs/base"
-require "logstash/namespace"
 
-# An rethinkdb output that does nothing.
+require 'logstash/outputs/base'
+require 'logstash/namespace'
+
 class LogStash::Outputs::Rethinkdb < LogStash::Outputs::Base
-  config_name "rethinkdb"
+  config_name 'rethinkdb'
 
-  public
-  def register
-  end # def register
+  def register; end # def register
 
-  public
   def receive(event)
-    return "Event received"
-  end # def event
-end # class LogStash::Outputs::Rethinkdb
+    p event
+    'Event received'
+  end
+end

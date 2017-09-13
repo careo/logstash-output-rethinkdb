@@ -32,3 +32,5 @@ Metrics/AbcSize:
   Max: 20
 Lint/UnusedBlockArgument:
   AutoCorrect: false
+Style/ClassAndModuleChildren:
+  Enabled: false

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'active_support'
-
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
 
