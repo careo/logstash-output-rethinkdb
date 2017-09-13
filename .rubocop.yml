@@ -1,0 +1,34 @@
+AllCops:
+  TargetRubyVersion: 2.3
+Style/Documentation:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/ClassLength:
+  Enabled: false
+Metrics/LineLength:
+  Max: 120
+Style/RedundantSelf:
+  Enabled: false
+Style/DoubleNegation:
+  Enabled: false
+Style/MethodName:
+  Enabled: false
+Style/VariableName:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Style/FileName:
+  Enabled: false
+Lint/Debugger:
+  Enabled: false
+Lint/UnneededDisable:
+  AutoCorrect: false
+Lint/UnusedMethodArgument:
+  AutoCorrect: false
+Style/SpecialGlobalVars:
+  AutoCorrect: false
+Metrics/AbcSize:
+  Max: 20
+Lint/UnusedBlockArgument:
+  AutoCorrect: false
