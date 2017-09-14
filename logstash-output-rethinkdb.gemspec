@@ -34,10 +34,12 @@ Gem::Specification.new do |s|
   # for bufffering
   # s.add_runtime_dependency 'stud'
 
-  s.add_runtime_dependency 'rethinkdb' # , '>=2.2.0'
+  s.add_runtime_dependency 'rethinkdb', '~> 2.3'
 
   s.add_development_dependency 'logstash-codec-json'
   s.add_development_dependency 'logstash-devutils'
   s.add_development_dependency 'logstash-input-generator'
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'rubocop'
   # s.add_development_dependency 'flores'
 end

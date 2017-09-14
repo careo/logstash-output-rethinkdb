@@ -47,21 +47,14 @@ class LogStash::Outputs::Rethinkdb < LogStash::Outputs::Base
 
   def register
     @codec.on_event(&method(:send_to_rethink))
-
     create_table
   end
-  
+
   def close
     connection.close
   end
 
-  def create_table
-    return false if self.database.table_list.run(self.connection).include?(@table)
-    self.database.table_create(@table).run(self.connection)
-  end
-
   def receive(event)
-    return if event == LogStash::SHUTDOWN
     @codec.encode(event)
   rescue LocalJumpError
     # This LocalJumpError rescue clause is required to test for regressions
@@ -73,18 +66,15 @@ class LogStash::Outputs::Rethinkdb < LogStash::Outputs::Base
                                          event: event)
   end
 
-  def multi_receive(events)
-    if @receives_encoded
-      self.multi_receive_encoded(codec.multi_encode(events))
-    else
-      events.each {|event| receive(event) }
-    end
+  protected
+
+  def create_table
+    return false if self.database.table_list.run(self.connection).include?(@table)
+    self.database.table_create(@table).run(self.connection)
   end
+
   def send_to_rethink(event, payload)
-    puts 'payload:'
-    pp payload
-    result = table.insert(JSON.parse(payload, symbolize_names: true)).run(self.connection)
-    p [:result, result]
+    table.insert(JSON.parse(payload, symbolize_names: true)).run(self.connection)
   rescue => e
     pp e
     @logger.warn('Failed to send event to Redis', event: event,

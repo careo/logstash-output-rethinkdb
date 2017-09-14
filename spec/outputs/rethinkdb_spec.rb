@@ -1,19 +1,16 @@
 # encoding: utf-8
 # frozen_string_literal: true
 
-require 'logstash/devutils/rspec/spec_helper'
-require 'logstash/outputs/rethinkdb'
-require 'logstash/codecs/plain'
-require 'logstash/event'
+require 'spec_helper'
 
 describe LogStash::Outputs::Rethinkdb do
   let(:sample_event) { LogStash::Event.new }
 
-  let(:extra_config) { Hash.new }
+  let(:extra_config) { {} }
   let(:default_config) do
     {
-      "database" => "test",
-      "table" => "events"
+      'database' => 'test',
+      'table' => 'events'
     }
   end
   let(:redis_config) do
@@ -26,10 +23,9 @@ describe LogStash::Outputs::Rethinkdb do
   end
 
   describe 'receive message' do
-    subject { rethinkdb_output.receive(sample_event) }
-
-    it 'returns a string' do
-      expect(subject).to eq('Event received')
+    subject(:result) { rethinkdb_output.receive(sample_event) }
+    it 'inserts the records' do
+      expect(result['inserted']).to eq 1
     end
   end
 end
