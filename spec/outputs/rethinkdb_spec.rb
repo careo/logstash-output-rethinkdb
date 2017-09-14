@@ -8,14 +8,25 @@ require 'logstash/event'
 
 describe LogStash::Outputs::Rethinkdb do
   let(:sample_event) { LogStash::Event.new }
-  let(:output) { LogStash::Outputs::Rethinkdb.new }
+
+  let(:extra_config) { Hash.new }
+  let(:default_config) do
+    {
+      "database" => "test",
+      "table" => "events"
+    }
+  end
+  let(:redis_config) do
+    default_config.merge(extra_config)
+  end
+  let(:rethinkdb_output) { described_class.new(redis_config) }
 
   before do
-    output.register
+    rethinkdb_output.register
   end
 
   describe 'receive message' do
-    subject { output.receive(sample_event) }
+    subject { rethinkdb_output.receive(sample_event) }
 
     it 'returns a string' do
       expect(subject).to eq('Event received')

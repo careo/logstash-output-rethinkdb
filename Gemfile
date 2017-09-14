@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 gemspec
 
+# gem "logstash", :github => "elastic/logstash", :branch => "5.6"
 group :development, :test do
   gem 'rack-test', require: 'rack/test'
   gem 'rspec' # needed for rake task

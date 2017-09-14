@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |s|
-  s.name          = 'logstash-output-rethinkdb'
+  s.name = 'logstash-output-rethinkdb'
   s.version       = '0.1.0'
   s.licenses      = ['Apache-2.0']
   s.summary       = 'Write a short summary, because Rubygems requires one.'
@@ -30,6 +30,14 @@ Gem::Specification.new do |s|
 
   # Gem dependencies
   s.add_runtime_dependency 'logstash-core-plugin-api', '~> 2.0'
-  s.add_runtime_dependency 'logstash-codec-plain'
+
+  # for bufffering
+  # s.add_runtime_dependency 'stud'
+
+  s.add_runtime_dependency 'rethinkdb' # , '>=2.2.0'
+
+  s.add_development_dependency 'logstash-codec-json'
   s.add_development_dependency 'logstash-devutils'
+  s.add_development_dependency 'logstash-input-generator'
+  # s.add_development_dependency 'flores'
 end

@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     logstash-output-rethinkdb (0.1.0)
-      logstash-codec-plain
       logstash-core-plugin-api (~> 2.0)
+      rethinkdb
 
 GEM
   remote: https://rubygems.org/
@@ -61,6 +61,8 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
+    logstash-codec-json (3.0.4)
+      logstash-core-plugin-api (>= 1.60, <= 2.99)
     logstash-codec-plain (3.0.4)
       logstash-core-plugin-api (>= 1.60, <= 2.99)
     logstash-core (5.5.1.snapshot1-java)
@@ -98,6 +100,9 @@ GEM
       rspec (~> 3.0)
       rspec-wait
       stud (>= 0.0.20)
+    logstash-input-generator (3.0.4)
+      logstash-codec-plain
+      logstash-core-plugin-api (>= 1.60, <= 2.99)
     lumberjack (1.0.12)
     manticore (0.6.1-java)
     method_source (0.8.2)
@@ -131,6 +136,7 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    rethinkdb (2.3.0.2)
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
       rspec-expectations (~> 3.6.0)
@@ -189,7 +195,9 @@ DEPENDENCIES
   guard
   guard-rspec
   guard-rubocop
+  logstash-codec-json
   logstash-devutils
+  logstash-input-generator
   logstash-output-rethinkdb!
   pry
   rack-test

@@ -17,6 +17,8 @@ Need help? Try #logstash on freenode IRC or the https://discuss.elastic.co/c/log
 
 ## Developing
 
+https://www.elastic.co/guide/en/logstash/current/_how_to_write_a_logstash_output_plugin.html
+
 ### 1. Plugin Developement and Testing
 
 #### Code
